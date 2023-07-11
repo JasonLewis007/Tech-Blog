@@ -1,34 +1,45 @@
-<div class="blog-section">
-    <div class="blog-header">
+<form>
+    <!-- POST HEADER INFO -->
+    <div class="post-header">
         <h2>{{post.title}}</h2>
-        <p>posted by {{post.user.username}} at {{format_date post.created_at}}</p>
+        <h4>Posted by {{post.user.username}} on {{format_date post.created_at}}</h4>
     </div>
-    <p class="blog-text">
-        {{post.post_content}}
-    </p>
-</div>
-<div class="comment-section">
-    <h3>Comments:</h3>
-        {{#each post.comments}}
-        <section class="comments">
-            <p class="comment-title">From: {{user.username}} on {{format_date created_at}}</p>
-            <p>{{comment_text}}</p>
-        </section>
-        {{/each}}
-</div>
+    <!-- POST MESSAGE -->
+    <div>
+        <p>{{post.content}}</p>
+    </div>
+</form>
+
 {{#if loggedIn}}
-<h3 class="add-comment-title">Add Comment:</h3>
-<form class="comment-form">
-        <div class="form-contents">
-            <div>
-                <textarea name="comment-body"></textarea>
-            </div>
-            <div>
-                <button id="comment" type="submit">+ Add Comment</button>
-            </div>
+<!-- CREATE A POST FORM -->
+<form id="comment-form">
+    <div class="post-header">
+        <h2>Create A Comment</h2>
+    </div>
+    <div class="post-content">
+        <div>
+            <label>Comment</label>
+            <textarea class="textarea" placeholder="..." id="comment-text"></textarea>
         </div>
+        <button class="btn-generic" type="submit">Create</button>
+    </div>
 </form>
 {{/if}}
+
+{{#each post.comments as |comment|}}
+<!-- COMMENT FORM -->
+<form>
+    <!-- COMMENT MESSAGE -->
+    <div>
+        <p>{{comment.comment_text}}</p>
+    </div>
+    <!-- COMMENT FOOTER INFO -->
+    <div class="post-header">
+        <h4>- {{user.username}} on {{format_date created_at}}</h4>
+    </div>
+</form>
+{{/each}}
+
 {{#if loggedIn}}
-<script src="/js/comment.js"></script>
+<script src="/javascript/comment.js"></script>
 {{/if}}

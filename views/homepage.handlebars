@@ -1,11 +1,14 @@
+<!-- POST FORM -->
 {{#each posts as |post|}}
-<div class="blog-section">
-    <div class="blog-header">
-        <a href="/post/{{post.id}}">{{post.title}}</a>
-        <p>posted by {{post.user.username}} at {{format_date post.created_at}}</p>
+<form>
+    <!-- POST HEADER INFO -->
+    <div class="post-header">
+        <a class="post-link" href="/post/{{post.id}}">{{post.title}}</a>
+        <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
     </div>
-    <p class="blog-text">
-        {{post.post_content}}
-    </p>
-</div>
+    <!-- POST MESSAGE -->
+    <div>
+        <p>{{post.content}}</p>
+    </div>
+</form>
 {{/each}}
