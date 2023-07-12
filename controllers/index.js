@@ -1,4 +1,3 @@
-
 const router = require('express').Router();
 
 const apiRoutes = require('./api');
@@ -10,4 +9,3 @@ router.use('/', homeRoutes);
 router.use('/dashboard', dashboardRoutes);
 
 module.exports = router;
-

@@ -1,17 +1,21 @@
-<!-- LOG IN FORM -->
-<form id="login-form">
-    <div class="post-header">
-        <h2>Login</h2>
-    </div>
-    <div class="post-content">
-        <div>
-            <label for="username-login">Username</label>
-            <input type="text" id="username-login" placeholder="...">
-            <label for="password-login">Password</label>
-            <input type="password" id="password-login" placeholder="...">
-        </div>
-        <button class="btn-generic" type="submit">Login!</button>
-        <a class="login-link" href="/signup">Sign up instead</a>
-    </div>
+<div class="card">
+  <div class="card-header">
+    <h2>Login:</h2>
+  </div>
+
+<form class="card-body" id="login-form">
+  <div>
+    <label for="username-input-login">Username:</label>
+    <input type="text" id="username-input-login"/>
+  </div>
+  <div>
+    <label for="password-input-login" class="form-label">Password:</label>
+    <input type="password" id="password-input-login" />
+  </div>
+  <div>
+    <button type="submit" class="btn" id="login-btn">Login:</button>
+    <a type="button" href="/signup">Signup Instead</a>
 </form>
-<script src="/javascript/login.js"></script>
+</div>
+
+<script src="/js/login.js"></script>
