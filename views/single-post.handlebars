@@ -1,52 +1,45 @@
-<div class="post">
-  <article class="card">
-    <div class="card-header flex-row justify-space-between">
-      <h2>{{post.title}}</h2>
-      <div>
-        Posted by {{post.User.username}} on {{format_date post.createdAt}}
-      </div>
+<form>
+    <!-- POST HEADER INFO -->
+    <div class="post-header">
+        <h2>{{post.title}}</h2>
+        <h4>Posted by {{post.user.username}} on {{format_date post.created_at}}</h4>
     </div>
-    <div class="card-body">
-      {{ post.post_content}}
+    <!-- POST MESSAGE -->
+    <div>
+        <p>{{post.content}}</p>
     </div>
-  </article>
+</form>
 
-  {{#if post.Comments}}
-    <section class="card">
-      <div class="card-header">
-        <h3>Comments</h3>
-      </div>
-
-      <div class="card-body">
-        {{#each post.Comments}}
-          <div>
-            <p>
-              {{body}}
-            </p>
-            <p>
-              &mdash; {{User.username}}, {{format_date createdAt}}
-            </p>
-          </div>
-        {{/each}}
-      </div>
-    </section>
-
+{{#if loggedIn}}
+<!-- CREATE A POST FORM -->
+<form id="comment-form">
+    <div class="post-header">
+        <h2>Create A Comment</h2>
+    </div>
+    <div class="post-content">
+        <div>
+            <label>Comment</label>
+            <textarea class="textarea" placeholder="..." id="comment-text"></textarea>
+        </div>
+        <button class="btn-generic" type="submit">Create</button>
+    </div>
+</form>
 {{/if}}
 
-  <form id="new-comment-form" class="card">
-    <h3>Add Comment:</h3>
-  </div>
-  
-  <div class="card-body">
-    <input type="hidden" name="post-id" value="{{post.id}}" />
-
-    <label class="form-label" for="comment-body">Comment</label>
-
-    <textarea name="comment-body" class="form-input"></textarea>
-
-    <button type="submit" class="btn">Submit</button>
+{{#each post.comments as |comment|}}
+<!-- COMMENT FORM -->
+<form>
+    <!-- COMMENT MESSAGE -->
+    <div>
+        <p>{{comment.comment_text}}</p>
     </div>
-  </form>
-</div>
+    <!-- COMMENT FOOTER INFO -->
+    <div class="post-header">
+        <h4>- {{user.username}} on {{format_date created_at}}</h4>
+    </div>
+</form>
+{{/each}}
 
-<script src="/public/js/comment.js"></script>
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
