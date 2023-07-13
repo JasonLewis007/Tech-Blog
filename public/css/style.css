@@ -200,8 +200,10 @@ button {
   font-weight: bold;
 }
 
+/* =================================== */
+/* UTILITY */
 .center {
   display: flex;
   flex-direction: column;
   align-items: center;
-} 
+}
